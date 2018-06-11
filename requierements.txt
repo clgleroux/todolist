@@ -1,0 +1,6 @@
+Django<=1.11
+pdbpp
+django_compressor
+libsass
+django-compressor
+django-sass-processor
