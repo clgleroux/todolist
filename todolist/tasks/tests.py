@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from .models import TASK
+from .models import Task
 
+from django.urls import reverse
 from django.test import TestCase
 
 # Create your tests here.
@@ -9,40 +10,12 @@ from django.test import TestCase
 
 class TestTask(TestCase):
 
-    def test_creation(self):
-        description = 'Je suis la premiere tache'
-        obj = TASK.objects.create(description=description)
-        id = obj.id
-        self.assertEquals(len(obj.status), 1)
-        self.assertEquals(obj.status, 'N')
-        self.assertEquals(obj.description, description)
-        self.assertEquals(obj.id, id)
-        self.assertEquals(TASK.objects.all().count(), 1)
-
-    def test_differents(self):
-        obj1 = TASK.objects.create(description='Je suis la premiere tache')
-        obj2 = TASK.objects.create(description='Je suis la seconde tache')
-        self.assertEquals(TASK.objects.all().count(), 2)
-        self.assertNotEquals(obj1, obj2)
-
-    def test_status(self):
-        obj1 = TASK.objects.create(description='Je suis la premiere tache')
-        obj1.status = 'P'
-        self.assertEquals(obj1.status, 'P')
-
-    def test_delete(self):
-        obj1 = TASK.objects.create(description='Je suis la premiere tache')
-        self.assertEquals(TASK.objects.all().count(), 1)
-        TASK.objects.all().delete()
-        self.assertEquals(TASK.objects.all().count(), 0)
-        obj1 = TASK.objects.create(description='Je suis la premiere tache')
-        self.assertEquals(TASK.objects.all().count(), 1)
-        id = obj1.id
-        obj = TASK.objects.get(id=id)
-        obj.delete()
-        self.assertEquals(TASK.objects.all().count(), 0)
-
-    def test_status_invalid(self):
-        obj1 = TASK.objects.create(description='Je suis la premiere tache')
-        obj1.status = 'P'
-        self.assertEquals(obj1.status, TASK.get_my_status())
+    def test_list_view(self):
+        descr1 = 'First description'
+        descr2 = 'Second description'
+        Task(description=descr1).save()
+        Task(description=descr2).save()
+        url = reverse('home')
+        response = self.client.get(url)
+        self.assertIn(descr1.encode(), response.content)
+        self.assertIn(descr2.encode(), response.content)
