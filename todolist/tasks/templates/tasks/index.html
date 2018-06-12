@@ -9,7 +9,10 @@
 
 <ul>
     {% for task in tasks %}
-    <li>{{ task.get_status_display }} - {{ task.description }}</li>
+    <li>
+        {{ task.get_status_display }} - {{ task.description }}
+        <a  href="{% url 'delete' task.pk %}">Delete</a>
+    </li>
     {% endfor %}
 </ul>
 {% endblock %}

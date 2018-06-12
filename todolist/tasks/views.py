@@ -24,5 +24,12 @@ def home(request):
     return render(
         request,
         'tasks/index.html',
-        {'form': form, 'tasks': Task.objects.all()},
+        {
+            'form': form,
+            'tasks': Task.objects.all().order_by('-pk')},
         )
+
+
+def delete(request, pk):
+    Task.objects.get(pk=pk).delete()
+    return redirect(reverse('home'))
