@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 
-class TASK(models.Model):
+class Task(models.Model):
     description = models.TextField(max_length=240)
     NEW = 'N'
     PENDING = 'P'
@@ -21,8 +21,8 @@ class TASK(models.Model):
     )
 
     def __str__(self):
-        return '{} - {}'.format(self.description, self.status)
-
-    def get_my_status():
-        # you place some logic here
-        return TASK.STATUS_CHOICES
+        if len(self.description) >= 40:
+            description = self.description[:40] + '...'
+        else:
+            description = self.description
+        return '{} - {}'.format(description, self.status)

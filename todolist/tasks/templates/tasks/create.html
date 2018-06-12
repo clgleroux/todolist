@@ -1,0 +1,9 @@
+{% extends "tasks/skeleton.html" %}
+
+{% block tasks %}
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" class="button" value="Submit">
+</form>
+{% endblock %}

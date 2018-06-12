@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>{% block title %}TodoList{% endblock %}</title>
+	<meta HTTP-EQUIV="CACHE-CONTROL" content="no-Cache">
+
+</head>
+
+<body>
+
+	<header>
+        <h1>TodoList</h1>
+	</header>
+
+    <div>
+        {% block tasks %}{% endblock %}
+    </div>
+
+
+	<footer>
+		<h6>{% block footer %}"© 2018, Made With ❤ By Clement  All rights reserved."{% endblock %}</h6>
+	</footer>
+
+</body>
+
+</html>

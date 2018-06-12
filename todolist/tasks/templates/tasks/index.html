@@ -1,0 +1,10 @@
+{% extends "tasks/skeleton.html" %}
+
+{% block tasks %}
+
+<ul>
+    {% for task in tasks %}
+    <li>{{ task.get_status_display }} - {{ task.description }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
