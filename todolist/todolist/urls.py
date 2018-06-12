@@ -16,10 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from tasks.views import home, delete
+from tasks.views import (
+    home, delete, update
+)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home, name="home"),
     url(r'^delete/(?P<pk>[0-9]+)/$', delete, name="delete"),
+    url(r'^update/(?P<pk>[0-9]+)/$', update, name="update"),
 ]
