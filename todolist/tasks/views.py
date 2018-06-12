@@ -7,25 +7,22 @@ from .forms import CreationForm
 
 
 def home(request):
-    return render(
-        request,
-        'tasks/index.html',
-        {'tasks': Task.objects.all()},
-    )
-
-
-def create(request):
     if request.method == "POST":
         form = CreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse('home'), status=201)
+            return redirect(reverse('home'))
         else:
             return render(
                 request,
-                'tasks/create.html',
+                'tasks/index.html',
                 {'form': form},
                 status=400)
     else:
         form = CreationForm()
-    return render(request, 'tasks/create.html', {'form': form})
+    # return redirect(reverse('home'), {'form': form})
+    return render(
+        request,
+        'tasks/index.html',
+        {'form': form, 'tasks': Task.objects.all()},
+        )
