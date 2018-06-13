@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tasks',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -128,4 +129,17 @@ LANGUAGES = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+    'sass_processor.finders.CssFinder',
+]
+SASS_PROCESSOR_INCLUDE_DIRS = [
+    os.path.join(
+                BASE_DIR,
+                'tasks/static/tasks/vendor/'
+                'node_modules/foundation-sites/scss'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
