@@ -1,0 +1,11 @@
+html, body {
+    height: 100%;
+}
+select {
+  // remove native carret, foundation provide one as background image
+  -moz-appearance: none;    // for firefox
+  -webkit-appearance:none;  // for chrome
+  &::-ms-expand {           // for IE10
+    display: none;
+  }
+}

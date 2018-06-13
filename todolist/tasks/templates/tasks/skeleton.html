@@ -3,30 +3,43 @@
 
 <html>
 
-<head>
-	<title>{% block title %}TodoList{% endblock %}</title>
-	{% compress css %}
-	<link href="{% sass_src 'tasks/scss/main.scss' %}" rel="stylesheet" type="text/css" />
-	{% endcompress %}
-	<meta HTTP-EQUIV="CACHE-CONTROL" content="no-Cache">
+  <head>
+    <title>{% block title %}TodoList{% endblock %}</title>
+    <meta HTTP-EQUIV="CACHE-CONTROL" content="no-Cache">
+    {% compress css %}
+    <link href="{% sass_src 'tasks/scss/main.scss' %}" rel="stylesheet" type="text/css" />
+    {% endcompress %}
 
-</head>
+  </head>
 
-<body>
+  <body>
 
-	<header>
-        <h1>TodoList</h1>
-	</header>
+    <header>
+      <h1>TodoList</h1>
+    </header>
 
     <div>
-        {% block tasks %}{% endblock %}
+      {% block tasks %}{% endblock %}
     </div>
 
 
-	<footer>
-		<h6>{% block footer %}"© 2018, Made With ❤ By Clement  All rights reserved."{% endblock %}</h6>
-	</footer>
-{% block 'js' %}{% endblock %}
-</body>
+    <footer>
+      <h6>{% block footer %}"© 2018, Made With ❤ By Clement  All rights reserved."{% endblock %}</h6>
+    </footer>
+
+    <script src="{% static 'tasks/vendor/node_modules/jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'tasks/vendor/node_modules/foundation-sites/dist/js/plugins/foundation.core.js' %}"></script>
+    <script src="{% static 'tasks/vendor/node_modules/foundation-sites/dist/js/plugins/foundation.util.keyboard.js' %}"></script>
+    <script src="{% static 'tasks/vendor/node_modules/foundation-sites/dist/js/plugins/foundation.util.mediaQuery.js' %}"></script>
+    <script src="{% static 'tasks/vendor/node_modules/foundation-sites/dist/js/plugins/foundation.util.motion.js' %}"></script>
+    <script src="{% static 'tasks/vendor/node_modules/foundation-sites/dist/js/plugins/foundation.util.triggers.js' %}"></script>
+    <script src="{% static 'tasks/vendor/node_modules/foundation-sites/dist/js/plugins/foundation.reveal.js' %}"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $(document).foundation();
+      })
+    </script>
+    {% block 'js' %}{% endblock %}
+  </body>
 
 </html>

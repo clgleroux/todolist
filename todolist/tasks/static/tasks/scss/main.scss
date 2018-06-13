@@ -3,6 +3,7 @@
 @import "settings";
 @import "foundation";
 
+@include foundation-global-styles;
 @include foundation-xy-grid-classes(
   /* options
   $base-grid: true,
@@ -25,7 +26,7 @@
 @include foundation-button-group;
 // @include foundation-callout;
 // @include foundation-card;
-// @include foundation-close-button;
+@include foundation-close-button;
 // @include foundation-menu;
 // @include foundation-menu-icon;
 // @include foundation-drilldown-menu;
