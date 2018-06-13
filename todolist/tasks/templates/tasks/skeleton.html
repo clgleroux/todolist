@@ -1,10 +1,13 @@
-{% load i18n %}
+{% load i18n static sass_tags compress %}
 <!DOCTYPE html>
 
 <html>
 
 <head>
 	<title>{% block title %}TodoList{% endblock %}</title>
+	{% compress css %}
+	<link href="{% sass_src 'tasks/scss/main.scss' %}" rel="stylesheet" type="text/css" />
+	{% endcompress %}
 	<meta HTTP-EQUIV="CACHE-CONTROL" content="no-Cache">
 
 </head>
