@@ -2,9 +2,6 @@ from django.shortcuts import (
     render, redirect)
 from django.urls import reverse
 
-from django.http import HttpRequest
-from django.http import QueryDict
-
 from .models import Task
 from .forms import (
     CreationForm, UpdateForm, SelectForm)

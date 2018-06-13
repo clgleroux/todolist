@@ -1,15 +1,15 @@
 {% extends "tasks/skeleton.html" %}
-{% load tasks_tags %}
+{% load tasks_tags i18n %}
 
 {% block tasks %}
 <form action="." method="post" autocomplete="off">
     {% csrf_token %}
     {{ create_form }}
-    <input type="submit" class="button" value="Submit">
+    <input type="submit" class="button" value={% trans "Submit" %}>
 </form>
 <form action="." method="get" autocomplete="off">
     {{ select_form }}
-    <input type="submit" class="button" value="Submit">
+    <input type="submit" class="button" value={% trans "Submit" %}>
 </form>
 <ul>
     {% for task in tasks %}
@@ -18,9 +18,9 @@
         <form action="{% url 'update' task.pk %}" method="post">
             {% csrf_token %}
             {% get_update_form_for task %}
-            <input type="submit" class="button" value="update">
+            <input type="submit" class="button" value={% trans "Update" %}>
         </form>
-        <a  href="{% url 'delete' task.pk %}">Delete</a>
+        <a  href="{% url 'delete' task.pk %}">{% trans "Delete"%}</a>
     </li>
     {% endfor %}
 </ul>

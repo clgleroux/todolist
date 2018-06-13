@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Task(models.Model):
@@ -10,9 +11,9 @@ class Task(models.Model):
     PENDING = 'P'
     DONE = 'D'
     STATUS_CHOICES = (
-        (NEW, 'New'),
-        (PENDING, 'Pending'),
-        (DONE, 'Done'),
+        (NEW, _('New')),
+        (PENDING, _('Pending')),
+        (DONE, _('Done')),
     )
     status = models.CharField(
         max_length=1,

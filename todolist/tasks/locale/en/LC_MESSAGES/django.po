@@ -1,0 +1,54 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-13 09:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: tasks/forms.py:12
+msgid "Description"
+msgstr ""
+
+#: tasks/forms.py:35
+msgid "Status"
+msgstr ""
+
+#: tasks/forms.py:39
+msgid "Select no more than 3."
+msgstr ""
+
+#: tasks/models.py:14
+msgid "New"
+msgstr ""
+
+#: tasks/models.py:15
+msgid "Pending"
+msgstr ""
+
+#: tasks/models.py:16
+msgid "Done"
+msgstr ""
+
+#: tasks/templates/tasks/index.html:8 tasks/templates/tasks/index.html:12
+msgid "Submit"
+msgstr ""
+
+#: tasks/templates/tasks/index.html:21
+msgid "Update"
+msgstr ""
+
+#: tasks/templates/tasks/index.html:23
+msgid "Delete"
+msgstr ""
