@@ -4,7 +4,7 @@ from django.urls import reverse
 
 from .models import Task
 from .forms import (
-    CreationForm, UpdateForm, SelectForm)
+    CreationForm, UpdateForm, FilterForm)
 
 
 def home(request):
@@ -21,19 +21,19 @@ def home(request):
                 status=400)
 
     create_form = CreationForm()
-    select_form = SelectForm()
+    filter_form = FilterForm()
     tasks = Task.objects.all().order_by('-pk')
 
     if 'status' in request.GET:
         tasks = tasks.filter(status__in=request.GET.getlist('status'))
-        select_form = SelectForm(request.GET)
+        filter_form = FilterForm(request.GET)
 
     return render(
         request,
         'tasks/index.html',
         {
             'create_form': create_form,
-            'select_form': select_form,
+            'filter_form': filter_form,
             'tasks': tasks,
         },
     )

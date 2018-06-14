@@ -1,0 +1,8 @@
+{% with id=widget.attrs.id %}
+<fieldset{% if id %} id="{{ id }}"{% endif %}>
+{% for group, options, index in widget.optgroups %}
+{% for option in options %}
+{% include option.template_name with widget=option %}
+{% endfor %}
+{% endfor %}
+</fieldset>{% endwith %}

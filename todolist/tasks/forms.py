@@ -13,6 +13,28 @@ class CreationForm(ModelForm):
         }
 
 
+class FoundationCheckboxSelectMultiple(forms.CheckboxSelectMultiple):
+    # Create a new class for change template CheckboxSelectMultiple
+
+    # Redirect for change structure with ul li
+    template_name = 'tasks/multi_choice_foundation.html'
+    # Redirect for change structure input label
+    option_template_name = 'tasks/option_foundation.html'
+
+
+class FilterForm(forms.Form):
+    status = forms.MultipleChoiceField(
+        choices=Task.STATUS_CHOICES,
+        # Redirect to FoundationCheckboxSelectMultiple
+        widget=FoundationCheckboxSelectMultiple(),
+        label=_("Status"))
+
+    def clean_my_field(self):
+        if len(self.cleaned_data['my_status']) > 3:
+            raise forms.ValidationError(_('Select no more than 3.'))
+        return self.cleaned_data['my_status']
+
+
 class UpdateForm(ModelForm):
     class Meta:
         model = Task
@@ -26,15 +48,3 @@ class UpdateForm(ModelForm):
 
     def save(self, pk):
         Task.objects.filter(pk=pk).update(**self.cleaned_data)
-
-
-class SelectForm(forms.Form):
-    status = forms.MultipleChoiceField(
-        choices=Task.STATUS_CHOICES,
-        widget=forms.CheckboxSelectMultiple(),
-        label=_("Status"))
-
-    def clean_my_field(self):
-        if len(self.cleaned_data['my_status']) > 3:
-            raise forms.ValidationError(_('Select no more than 3.'))
-        return self.cleaned_data['my_status']

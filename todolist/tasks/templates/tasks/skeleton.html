@@ -6,6 +6,7 @@
   <head>
     <title>{% block title %}TodoList{% endblock %}</title>
     <meta HTTP-EQUIV="CACHE-CONTROL" content="no-Cache">
+    <link rel="shortcut icon" href="{% static 'tasks/favicon.ico' type='image/x-icon' %}">
     {% compress css %}
     <link href="{% sass_src 'tasks/scss/main.scss' %}" rel="stylesheet" type="text/css" />
     {% endcompress %}
@@ -26,7 +27,7 @@
     <footer>
       <h6>{% block footer %}"© 2018, Made With ❤ By Clement  All rights reserved."{% endblock %}</h6>
     </footer>
-
+    {% compress js%}
     <script src="{% static 'tasks/vendor/node_modules/jquery/dist/jquery.js' %}"></script>
     <script src="{% static 'tasks/vendor/node_modules/foundation-sites/dist/js/plugins/foundation.core.js' %}"></script>
     <script src="{% static 'tasks/vendor/node_modules/foundation-sites/dist/js/plugins/foundation.util.keyboard.js' %}"></script>
@@ -40,6 +41,7 @@
       })
     </script>
     {% block 'js' %}{% endblock %}
+    {% endcompress %}
   </body>
 
 </html>

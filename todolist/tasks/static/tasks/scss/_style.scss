@@ -1,5 +1,11 @@
 html, body {
     height: 100%;
+    margin: 0;
+    background-color: $background-color;
+}
+
+header {
+    text-align: center;
 }
 select {
   // remove native carret, foundation provide one as background image
@@ -8,4 +14,38 @@ select {
   &::-ms-expand {           // for IE10
     display: none;
   }
+
+  margin-right: 15%;
+  margin-left: 15%;
+  width: 70%;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0 !important;
+}
+
+ul li.cell {
+    position: relative;
+    display: block;
+    margin: 0;
+    text-align: center;
+    background-color: grey;
+    margin-bottom: 2%;
+    padding-top: auto;
+    padding-bottom: auto;
+
+}
+
+footer {
+    bottom: 0;
+    position: absolute;
+    text-align: right;
+    width: 100vw;
+    right: 4rem;
+}
+
+p {
+    margin: 0;
+    margin-left: 70%;
 }

@@ -48,7 +48,7 @@ msgstr "Envoyer"
 
 #: tasks/templates/tasks/index.html:21
 msgid "Update"
-msgstr "Mettre à jour"
+msgstr "Mettre_a_jour"
 
 #: tasks/templates/tasks/index.html:23
 msgid "Delete"
