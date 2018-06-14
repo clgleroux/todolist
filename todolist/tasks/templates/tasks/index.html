@@ -4,11 +4,13 @@
 {% block tasks %}
 
 <p><button class="button" data-open="create-modal">New Task</button></p>
-
-        <form action="." method="get" autocomplete="off">
-          {{ filter_form }}
-          <input type="submit" class="button" value={% trans "Submit" %}>
-        </form>
+<div class="grid-x">
+<form class="cell small-3" id="filter_form" action="." method="get" autocomplete="off">
+  {% csrf_token %}
+  {{ filter_form }}
+  <input type="submit" class="button" value= {% trans "Submit" %}>
+ </form>
+</div>
 
 <div >
 <ul class="grid-x grid-margin-x small-up-2 medium-up-4 large-up-5">
@@ -21,7 +23,10 @@
       {% get_update_form_for task %}
       <input type="submit" class="button" value= {% trans "Update" %}>
     </form>
-    <a  href="{% url 'delete' task.pk %}">{% trans "Delete"%}</a>
+    <a  href="{% url 'delete' task.pk %}">
+      <button class = "close-button" type = "button">
+      <span aria-hidden = "true">×</span>
+    </button></a>
   </li>
 
   {% endfor %}

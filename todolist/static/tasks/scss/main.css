@@ -2896,6 +2896,7 @@ html.is-reveal-open body {
     position: fixed; }
 
 html, body {
+  min-height: 100vh;
   height: 100%;
   margin: 0;
   background-color: #dedede; }
@@ -2924,17 +2925,32 @@ ul li.cell {
   background-color: grey;
   margin-bottom: 2%;
   padding-top: auto;
-  padding-bottom: auto; }
+  padding-bottom: auto;
+  padding-left: 2%;
+  padding-right: 2%; }
 
 footer {
   bottom: 0;
-  position: absolute;
+  position: fixed;
   text-align: right;
   width: 100vw;
   right: 4rem; }
 
+footer h6 {
+  font-size: 0.7rem; }
+
 p {
   margin: 0;
   margin-left: 70%; }
+
+#filter_form {
+  background-color: red;
+  margin-bottom: 1%; }
+
+.close-button {
+  color: black; }
+
+.close-button:hover, .close-button:active {
+  color: red; }
 
 /*# sourceMappingURL=../../../../../../../../../static/tasks/scss/main.css.map */
