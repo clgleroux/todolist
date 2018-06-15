@@ -2,49 +2,73 @@
 {% load tasks_tags i18n static %}
 
 {% block tasks %}
+<div class="row">
+  <div class="small-12 flex-center columns">
+    <div id="page">
+      <div id="haut_page">
+        <div class="grid-x grid-margin-x">
+          <div class="cell small-9">
+            <p><button class="hollow button" id="buttonNew" data-open="create-modal">New Task</button></p>
+            <form id="filter_form" action="." method="get" autocomplete="off">
+              {% csrf_token %}
+              {{ filter_form }}
+              <input type="submit" class="button" value= {% trans "Submit" %}>
+            </form>
+          </div>
+          <div class="cell small-2 text-center color-text-grey">Status</div>
+          <div class="cell small-1 text-center color-text-grey">Delete</div>
+        </div>
+      </div>
 
-<p><button class="button" data-open="create-modal">New Task</button></p>
-<div class="grid-x">
-<form class="cell small-3" id="filter_form" action="." method="get" autocomplete="off">
-  {% csrf_token %}
-  {{ filter_form }}
-  <input type="submit" class="button" value= {% trans "Submit" %}>
- </form>
+      <div >
+        <ul class="no-bullet">
+
+          {% for task in tasks %}
+          <li>
+            <div class="grid-x grid-margin-x">
+
+              <div class="cell small-9">
+                {{ task.description }}
+              </div>
+
+              <div class="cell small-2 text-center">
+                <form action="{% url 'update' task.pk %}" method="post">
+                  {% csrf_token %}
+                  {% get_update_form_for task %}
+                  <input type="submit" class="button" value= {% trans "Update" %}>
+                </form>
+              </div>
+
+              <div class="cell small-1 text-center">
+                <button type="button" aria-label="Dismiss alert" id="close-button" data-close>
+                  <a  href="{% url 'delete' task.pk %}"><span aria-hidden="true">&times;</span></a>
+                </button>
+              </div>
+
+            </div>
+          </li>
+          {% endfor %}
+
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div >
-<ul class="grid-x grid-margin-x small-up-2 medium-up-4 large-up-5">
-
-  {% for task in tasks %}
-  <li class="cell">
-    {{ task.description }}
-    <form action="{% url 'update' task.pk %}" method="post">
-      {% csrf_token %}
-      {% get_update_form_for task %}
-      <input type="submit" class="button" value= {% trans "Update" %}>
-    </form>
-    <a  href="{% url 'delete' task.pk %}">
-      <button class = "close-button" type = "button">
-      <span aria-hidden = "true">×</span>
-    </button></a>
-  </li>
-
-  {% endfor %}
-</ul>
-</div>
-
 {% endblock %}
 
 {% block 'js' %}
 <!-- This is the first modal -->
 <div class="reveal" id="create-modal" data-reveal>
+
   <form action="." method="post" autocomplete="off">
     {% csrf_token %}
     {{ create_form }}
     <input type="submit" class="button" value= {% trans "Submit" %}>
   </form>
+
   <button class="close-button" data-close aria-label="Close reveal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
+
 </div>
 {% endblock %}

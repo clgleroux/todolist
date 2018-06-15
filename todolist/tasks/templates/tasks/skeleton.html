@@ -15,7 +15,7 @@
 
   <body>
 
-    <header>
+    <header class="header-shadow">
       <h1>TodoList</h1>
     </header>
 
@@ -25,7 +25,7 @@
 
 
     <footer>
-      <h6>{% block footer %}"© 2018, Made With ❤ By Clement  All rights reserved."{% endblock %}</h6>
+      <h6>{% block footer %}{% endblock %}</h6>
     </footer>
     {% compress js%}
     <script src="{% static 'tasks/vendor/node_modules/jquery/dist/jquery.js' %}"></script>

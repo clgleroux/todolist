@@ -62,10 +62,15 @@
 
 @import 'util/util';
 
-// 0. Global
+// 0. Colors
 // ---------
-$header-color: #ffffff;
-$background-color: #dedede;
+$background-header: rgb(255,255,255);
+$font-header: rgb(29,37,51);
+$background-color: rgb(237,241,242);
+$color-shadow: rgb(218,222,225);
+$color-button: rgb(88,182,243);
+$color-border-bottom: rgb(237,241,242);
+$color-grey: rgb(176,185,193);
 
 
 // 1. Global

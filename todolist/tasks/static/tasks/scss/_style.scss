@@ -1,71 +1,52 @@
 html, body {
-    min-height: 100vh;
-    height: 100%;
-    margin: 0;
     background-color: $background-color;
+    width: 100%;
 }
 
 header {
+    background-color: $background-header;
+    color: $font-header;
     text-align: center;
 }
-select {
-  // remove native carret, foundation provide one as background image
-  -moz-appearance: none;    // for firefox
-  -webkit-appearance:none;  // for chrome
-  &::-ms-expand {           // for IE10
-    display: none;
-  }
 
-  margin-right: 15%;
-  margin-left: 15%;
-  width: 70%;
+.header-shadow {
+
+      -webkit-box-shadow: 0 6px 4px -4px $color-shadow;
+      -moz-box-shadow: 0 6px 4px -4px $color-shadow;
+      box-shadow: 0 6px 4px -4px $color-shadow;
 }
 
-ul{
-    list-style-type: none;
-    margin: 0 !important;
+
+
+#page {
+    width: 75%;
+    background-color: $background-header;
+    -webkit-box-shadow: 12px 0 15px -4px $color-shadow, -12px 0 8px -4px $color-shadow;
+    -moz-box-shadow: 12px 0 15px -4px $color-shadow, -12px 0 8px -4px $color-shadow;
+    box-shadow: 12px 0 15px -4px $color-shadow, -12px 0 8px -4px $color-shadow;
 }
 
-ul li.cell {
-    position: relative;
-    display: block;
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#haut-page {
+    border-bottom : 2px solid $color-border-bottom;
+}
+
+#buttonNew {
+    color: $color-button;
+    border-color: $color-button;
     margin: 0;
-    text-align: center;
-    background-color: grey;
-    margin-bottom: 2%;
-    padding-top: auto;
-    padding-bottom: auto;
-    padding-left: 2%;
-    padding-right: 2%;
 
 }
 
-footer {
-    bottom: 0;
-    position: fixed;
-    text-align: right;
-    width: 100vw;
-    right: 4rem;
+.color-text-grey {
+    color: $color-grey;
 }
 
-footer h6 {
-    font-size: 0.7rem;
-}
-
-p {
-    margin: 0;
-    margin-left: 70%;
-}
-
-#filter_form {
-    background-color: red;
-    margin-bottom: 1%;
-}
-
-.close-button {
-    color: black;
-}
-
-.close-button:hover, .close-button:active {
-    color: red;
+#close-button {
+    font-size: 2em;
 }
