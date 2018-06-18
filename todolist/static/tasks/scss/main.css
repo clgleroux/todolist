@@ -3180,8 +3180,8 @@ a.button:hover, a.button:focus {
   left: 100%;
   z-index: 1;
   display: none;
-  min-width: 200px;
-  border: 1px solid #cacaca;
+  min-width: 50px;
+  border: 0;
   background: #fefefe; }
   .dropdown .is-dropdown-submenu a {
     padding: 0.7rem 1rem; }
@@ -3208,7 +3208,7 @@ a.button:hover, a.button:focus {
     border-left-style: solid;
     border-color: transparent transparent transparent #1779ba; }
   .is-dropdown-submenu .is-dropdown-submenu {
-    margin-top: -1px; }
+    margin-top: 0; }
   .is-dropdown-submenu > li {
     width: 100%; }
   .is-dropdown-submenu.js-dropdown-active {
@@ -3379,11 +3379,17 @@ h2 {
   border-bottom: 2px solid #00314a; }
 
 a {
-  color: black; }
+  color: black;
+  padding: 0 !important; }
 
 li#li-tasks {
   border-bottom: 2px solid #edf1f2;
   border-bottom-width: 50%; }
+
+ul.dropdown, ul.menu {
+  list-style-type: none;
+  margin-left: 14px;
+  max-width: 95px; }
 
 #p-new {
   display: inline-block;
@@ -3394,8 +3400,5 @@ li#li-tasks {
 
 #close-button {
   font-size: 2em; }
-
-[data-responsive-menu] ul {
-  display: none; }
 
 /*# sourceMappingURL=../../../../../../../../../static/tasks/scss/main.css.map */

@@ -5,36 +5,25 @@
   {% endfor %}
   {% endfor %}
 </select>
-<h1>Hello !</h1>
+
+
 
 {% with id=widget.attrs.id %}
-<ul class="dropdown menu"  {% if id %} id="{{ id }}"{% endif %} data-dropdown-menu>
-{% for group, options, index in widget.optgroups %}
-
-{% for option in options %}
-<li>
-{% include option.template_name with widget=option %}
-</li>
-{% endfor %}
-
-{% endfor %}
-</ul>
-{% endwith %}
-
-<h1>Hello !!</h1>
-
-{% with id=widget.attrs.id %}
-<ul{% if id %} id="{{ id }}"{% endif %}>
+<ul{% if id %} id="{{ id }}"{% endif %} class="dropdown menu text-center" data-dropdown-menu>
   {% for group, options, index in widget.optgroups %}
-  {% if group %}
   <li>
-  {{ group }}
-    <ul{% if id %} id="{{ id }}_{{ index }}"{% endif %}>
-    {% endif %}
     {% for option in options %}
+    {% if option.selected == True %}
+    <span class="label padding"><a href="#">{% include option.template_name with widget=option %}</a></span>
+    {% endif %}
+    {% endfor %}
+    <ul{% if id %} id="{{ id }}_{{ index }}"{% endif %} class="menu text-center">
+    {% for option in options %}
+    {% if option.selected == False %}
       <li>
-      {% include option.template_name with widget=option %}
+      <span class="label new"><a href="#">{% include option.template_name with widget=option %}</a></span>
       </li>
+      {% endif %}
       {% endfor %}
       {% if group %}
     </ul>

@@ -59,11 +59,18 @@ h2 {
 
 a {
     color: black;
+    padding: 0 !important;
 }
 
 li#li-tasks {
     border-bottom : 2px solid $color-border-bottom;
     border-bottom-width:50%;
+}
+
+ul.dropdown, ul.menu {
+    list-style-type: none;
+    margin-left: 14px;
+    max-width: 95px;
 }
 
 #p-new {
@@ -77,8 +84,4 @@ li#li-tasks {
 
 #close-button {
     font-size: 2em;
-}
-
-[data-responsive-menu] ul {
-display: none;
 }
