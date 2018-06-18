@@ -1,4 +1,5 @@
 from django import forms
+
 from django.forms import ModelForm
 from tasks.models import Task
 from django.utils.translation import gettext_lazy as _
@@ -35,10 +36,17 @@ class FilterForm(forms.Form):
         return self.cleaned_data['my_status']
 
 
+class FoundationSelectForm(forms.Select):
+    template_name = 'tasks/select_choice_foundation.html'
+
+
 class UpdateForm(ModelForm):
     class Meta:
         model = Task
         fields = ['status']
+        widgets = {
+            'status': FoundationSelectForm(),
+        }
 
     def __init__(self, *args, model_instance=None, **kwargs):
         initial = {}

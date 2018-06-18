@@ -7,6 +7,7 @@ header {
     background-color: $background-header;
     color: $font-header;
     text-align: center;
+    margin-bottom: 2%;
 }
 
 .header-shadow {
@@ -36,7 +37,7 @@ header {
     border-bottom : 2px solid $color-border-bottom;
 }
 
-#buttonNew {
+#button-new {
     color: $color-button;
     border-color: $color-button;
     margin: 0;
@@ -47,6 +48,37 @@ header {
     color: $color-grey;
 }
 
+#all-tasks {
+
+}
+
+h2 {
+    padding-top: 2%;
+    border-bottom : 2px solid $color-border-tasks;
+}
+
+a {
+    color: black;
+}
+
+li#li-tasks {
+    border-bottom : 2px solid $color-border-bottom;
+    border-bottom-width:50%;
+}
+
+#p-new {
+    display: inline-block;
+    top: 0;
+}
+
+#filter_form {
+    display: inline-block;
+}
+
 #close-button {
     font-size: 2em;
+}
+
+[data-responsive-menu] ul {
+display: none;
 }

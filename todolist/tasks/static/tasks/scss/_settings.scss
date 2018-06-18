@@ -70,7 +70,12 @@ $background-color: rgb(237,241,242);
 $color-shadow: rgb(218,222,225);
 $color-button: rgb(88,182,243);
 $color-border-bottom: rgb(237,241,242);
+$color-border-tasks: rgb(0,49,74);
 $color-grey: rgb(176,185,193);
+
+$label-palette: (
+
+) !default;
 
 
 // 1. Global
@@ -85,6 +90,10 @@ $foundation-palette: (
   success: #3adb76,
   warning: #ffae00,
   alert: #cc4b37,
+
+  done: rgb(0,191,156),
+  padding: rgb(7,169,237),
+  new: rgb(255,96,27),
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
@@ -101,6 +110,7 @@ $global-position: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
+$radius-label: 12px;
 $global-menu-padding: 0.7rem 1rem;
 $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
@@ -468,7 +478,7 @@ $label-color-alt: $black;
 $label-palette: $foundation-palette;
 $label-font-size: 0.8rem;
 $label-padding: 0.33333rem 0.5rem;
-$label-radius: $global-radius;
+$label-radius: $radius-label;
 
 // 22. Media Object
 // ----------------

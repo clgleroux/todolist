@@ -3,35 +3,58 @@
 
 {% block tasks %}
 <div class="row">
-  <div class="small-12 flex-center columns">
+  <div class="small-12 flex-center columns ">
     <div id="page">
-      <div id="haut_page">
+      <div id="haut-page">
         <div class="grid-x grid-margin-x">
-          <div class="cell small-9">
-            <p><button class="hollow button" id="buttonNew" data-open="create-modal">New Task</button></p>
+          <div class="cell small-7 large-offset-1 align-self-top">
+
+            <p id="p-new"><button class="hollow button" id="button-new" data-open="create-modal">New Task</button></p>
             <form id="filter_form" action="." method="get" autocomplete="off">
               {% csrf_token %}
               {{ filter_form }}
-              <input type="submit" class="button" value= {% trans "Submit" %}>
+
+     <input type="submit" class="button" value= {% trans "Submit" %}>
             </form>
+
           </div>
-          <div class="cell small-2 text-center color-text-grey">Status</div>
-          <div class="cell small-1 text-center color-text-grey">Delete</div>
+          <div class="cell small-2 align-self-middle text-center color-text-grey">Status</div>
+          <div class="cell small-1 align-self-middle text-center color-text-grey">Delete</div>
         </div>
       </div>
 
-      <div >
+      <div id="all-tasks">
+        <div class="grid-x grid-margin-x">
+          <div class="cell small-10 large-offset-1">
+            <h2>Tasks</h2>
+        </div>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell small-10 large-offset-1">
+
+            <ul class="dropdown menu" data-dropdown-menu>
+              <li>
+                <span class="label new"><a href="#Item-2">New</a></span>
+                <ul class="menu">
+                  <li><span class="label padding"><a href="#Item-2A">Padding</a></span></li>
+                  <li><span class="label done"><a href="#Item-2B">Done</a></span></li>
+                </ul>
+              </li>
+            </ul>
+
+
         <ul class="no-bullet">
 
           {% for task in tasks %}
-          <li>
-            <div class="grid-x grid-margin-x">
 
-              <div class="cell small-9">
+
+          <li id="li-tasks">
+            <div class="grid-x grid-margin-x">
+              <div class="cell small-9 border-bottom">
                 {{ task.description }}
               </div>
 
-              <div class="cell small-2 text-center">
+              <div class="cell small-2 text-center align-self-middle">
                 <form action="{% url 'update' task.pk %}" method="post">
                   {% csrf_token %}
                   {% get_update_form_for task %}
@@ -39,17 +62,21 @@
                 </form>
               </div>
 
-              <div class="cell small-1 text-center">
+              <div class="cell small-1 text-center align-self-middle">
                 <button type="button" aria-label="Dismiss alert" id="close-button" data-close>
                   <a  href="{% url 'delete' task.pk %}"><span aria-hidden="true">&times;</span></a>
                 </button>
               </div>
-
             </div>
           </li>
+
+
+
           {% endfor %}
 
         </ul>
+    </div>
+</div>
       </div>
     </div>
   </div>
