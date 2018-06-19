@@ -69,7 +69,6 @@ li#li-tasks {
 
 ul.dropdown, ul.menu {
     list-style-type: none;
-    margin-left: 14px;
     max-width: 95px;
 }
 
@@ -85,3 +84,5 @@ ul.dropdown, ul.menu {
 #close-button {
     font-size: 2em;
 }
+
+.menu{display:none}

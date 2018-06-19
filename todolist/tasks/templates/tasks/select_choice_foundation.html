@@ -9,7 +9,7 @@
 
 
 {% with id=widget.attrs.id %}
-<ul{% if id %} id="{{ id }}"{% endif %} class="dropdown menu text-center" data-dropdown-menu>
+<ul{% if id %} id="{{ id }}"{% endif %} class="dropdown text-center" data-dropdown-menu>
   {% for group, options, index in widget.optgroups %}
   <li>
     {% for option in options %}
