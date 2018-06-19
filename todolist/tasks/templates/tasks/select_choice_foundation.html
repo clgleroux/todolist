@@ -14,14 +14,14 @@
   <li>
     {% for option in options %}
     {% if option.selected == True %}
-    <span class="label padding"><a href="#">{% include option.template_name with widget=option %}</a></span>
+    <span class='label {{ option.value }}' ><a href="#">{% include option.template_name with widget=option %}</a></span>
     {% endif %}
     {% endfor %}
     <ul{% if id %} id="{{ id }}_{{ index }}"{% endif %} class="menu text-center">
     {% for option in options %}
     {% if option.selected == False %}
       <li>
-      <span class="label new"><a href="#">{% include option.template_name with widget=option %}</a></span>
+      <span class="label {{ option.value }}"><a href="#">{% include option.template_name with widget=option %}</a></span>
       </li>
       {% endif %}
       {% endfor %}
