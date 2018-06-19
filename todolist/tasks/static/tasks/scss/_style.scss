@@ -70,6 +70,8 @@ li#li-tasks {
 ul.dropdown, ul.menu {
     list-style-type: none;
     max-width: 95px;
+    margin: 0;
+    padding: 1rem 0;
 }
 
 #p-new {
@@ -85,4 +87,8 @@ ul.dropdown, ul.menu {
     font-size: 2em;
 }
 
-.menu{display:none}
+ul.sub-ul {
+    margin-left: 13px;
+    background-color: $color-shadow;
+    padding: 0;
+}

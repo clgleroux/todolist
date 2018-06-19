@@ -44,6 +44,9 @@ class UpdateForm(ModelForm):
     class Meta:
         model = Task
         fields = ['status']
+        labels = {
+            "status": ''
+        }
         widgets = {
             'status': FoundationSelectForm(),
         }
