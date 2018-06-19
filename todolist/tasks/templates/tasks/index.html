@@ -44,9 +44,6 @@
               </div>
 
               <div class="cell small-2 text-center align-self-middle">
-                <form action="{% url 'update' task.pk %}" name="search_form" method="get">
-                  <input name="stype" type="hidden">
-                  {% csrf_token %}
                   {% get_update_form_for task %}
                 </form>
               </div>

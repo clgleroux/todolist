@@ -12,7 +12,7 @@
     {% for option in options %}
     {% if option.selected == False %}
       <li>
-      <span class="label {{ option.value }}"><a href=''>{% include option.template_name with widget=option %}</a></span>
+      <span class="label {{ option.value }}"><a href='{% url 'update' instance_pk %}?status={{ option.value }}'>{% include option.template_name with widget=option %}</a></span>
       </li>
       {% endif %}
       {% endfor %}
