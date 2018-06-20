@@ -15,22 +15,22 @@ class TestTask(TestCase):
         descr2 = 'Second description'
         Task(description=descr1).save()
         Task(description=descr2).save()
-        url = reverse('home')
+        url = reverse('tasks:home')
         response = self.client.get(url)
         self.assertIn(descr1.encode(), response.content)
         self.assertIn(descr2.encode(), response.content)
 
     def test_form_exists(self):
-        create = reverse("home")
+        create = reverse("tasks:home")
         response = self.client.get(create)
         self.assertEquals(response.status_code, 200)
 
     def test_form_valid(self):
-        create = reverse("home")
+        create = reverse("tasks:home")
         response = self.client.post(create, {"description": "First todo"})
         self.assertEquals(response.status_code, 302)
 
     def test_form_invalid(self):
-        create = reverse("home")
+        create = reverse("tasks:home")
         response = self.client.post(create, {})
         self.assertEquals(response.status_code, 400)

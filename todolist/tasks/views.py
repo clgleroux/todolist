@@ -12,7 +12,7 @@ def home(request):
         create_form = CreationForm(request.POST)
         if create_form.is_valid():
             create_form.save()
-            return redirect(reverse('home'))
+            return redirect(reverse('tasks:home'))
         else:
             return render(
                 request,
@@ -41,7 +41,7 @@ def home(request):
 
 def delete(request, pk):
     Task.objects.get(pk=pk).delete()
-    return redirect(reverse('home'))
+    return redirect(reverse('tasks:home'))
 
 
 def update(request, pk):
@@ -49,4 +49,4 @@ def update(request, pk):
         form = UpdateForm(request.GET)
         if form.is_valid():
             form.save(pk)
-    return redirect(reverse('home'))
+    return redirect(reverse('tasks:home'))
