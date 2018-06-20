@@ -8,6 +8,7 @@ from .forms import (
 
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.views import logout_then_login
 
 
 def home(request):
@@ -67,3 +68,7 @@ def register(request):
         form = UserCreationForm()
 
     return render(request, 'tasks/register.html', {'form': form})
+
+
+def logoutnlogin(request):
+    return logout_then_login(request, login_url='/login')

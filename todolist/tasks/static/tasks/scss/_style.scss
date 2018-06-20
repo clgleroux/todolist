@@ -3,7 +3,7 @@ html, body {
     width: 100%;
 }
 
-header {
+.top-bar {
     background-color: $background-header;
     color: $font-header;
     text-align: center;
@@ -91,4 +91,8 @@ ul.sub-ul {
     margin-left: 13px;
     background-color: $color-shadow;
     padding: 0;
+}
+
+.top-bar-center {
+  flex: 1 0 auto;
 }

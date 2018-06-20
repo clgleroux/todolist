@@ -5,8 +5,6 @@ from django.forms.fields import TypedChoiceField
 from tasks.models import Task
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 
 
 class CreationForm(ModelForm):

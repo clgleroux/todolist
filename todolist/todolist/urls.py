@@ -23,6 +23,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', auth_views.LoginView.as_view(
         template_name='tasks/login.html')),
+    url(
+        r'^tasks/logout/$',
+        auth_views.logout,
+        {'next_page': '/'},
+        name='logout'),
     url(r'^register/$', views.register, name='register'),
     url(r'^tasks/', include('tasks.urls', namespace='tasks')),
 ]
