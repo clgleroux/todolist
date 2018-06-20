@@ -6,6 +6,9 @@ from .models import Task
 from .forms import (
     CreationForm, UpdateForm, FilterForm)
 
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+
 
 def home(request):
     if request.method == "POST":
@@ -50,3 +53,17 @@ def update(request, pk):
         if form.is_valid():
             form.save(pk)
     return redirect(reverse('tasks:home'))
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Account created successfully')
+            return redirect('register')
+
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'tasks/register.html', {'form': form})

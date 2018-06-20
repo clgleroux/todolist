@@ -4,6 +4,9 @@ from django.forms import ModelForm
 from django.forms.fields import TypedChoiceField
 from tasks.models import Task
 from django.utils.translation import gettext_lazy as _
+from django.views.generic import TemplateView
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 
 class CreationForm(ModelForm):
@@ -70,3 +73,7 @@ class UpdateForm(ModelForm):
 
     def save(self, pk):
         Task.objects.filter(pk=pk).update(**self.cleaned_data)
+
+
+class LoginView(TemplateView):
+    template_name = 'tasks/login.html'
