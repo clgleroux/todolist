@@ -3,11 +3,16 @@ html, body {
     width: 100%;
 }
 
+// Top Bar
+
 .top-bar {
     background-color: $background-header;
     color: $font-header;
     text-align: center;
     margin-bottom: 2%;
+}
+h1 {
+    text-align: center !important;
 }
 
 .header-shadow {
@@ -52,6 +57,10 @@ html, body {
 
 }
 
+h1 {
+    text-align: center;
+}
+
 h2 {
     padding-top: 2%;
     border-bottom : 2px solid $color-border-tasks;
@@ -93,6 +102,24 @@ ul.sub-ul {
     padding: 0;
 }
 
-.top-bar-center {
-  flex: 1 0 auto;
+
+
+// Form Register
+table {
+    list-style-type: none;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+}
+
+form li {
+    list-style-type: none;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+}
+
+
+ul {
+    list-style-type: none;
 }
