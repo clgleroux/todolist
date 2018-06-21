@@ -16,9 +16,8 @@
   <body class="no-js">
 
     <div class="top-bar header-shadow">
-              <div class="top-bar-center">
-                <h1>TodoList</h1>
-            </div>
+                <h1 class="menu">TodoList</h1>
+    </div>
             <div class="top-bar-right">
                 {% if request.user.is_authenticated %}
                 <h4>Hello {{ user.username }}</h4>

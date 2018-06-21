@@ -9,6 +9,7 @@ from .forms import (
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import logout_then_login
+from django.contrib.auth.views import LoginView as LoginView_
 
 
 def home(request):
@@ -79,3 +80,12 @@ def register(request):
 
 def logoutnlogin(request):
     return logout_then_login(request, login_url='/login')
+
+
+class LoginView(LoginView_):
+    template_name = 'tasks/login.html'
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            return redirect('tasks:home')
+        return super().get(request, *args, **kwargs)
