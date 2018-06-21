@@ -21,8 +21,10 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', auth_views.LoginView.as_view(
-        template_name='tasks/login.html')),
+    url(r'^$',
+        auth_views.LoginView.as_view(
+            template_name='tasks/login.html'),
+        name='login'),
     url(
         r'^tasks/logout/$',
         auth_views.logout,

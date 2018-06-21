@@ -12,6 +12,8 @@ from django.contrib.auth.views import logout_then_login
 
 
 def home(request):
+    if not request.user.is_authenticated():
+        return redirect('login')
     if request.method == "POST":
         create_form = CreationForm(request.POST)
         if create_form.is_valid():
