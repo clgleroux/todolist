@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from django.contrib.auth.models import User
+
 
 class Task(models.Model):
     description = models.TextField(max_length=240)
@@ -19,6 +21,9 @@ class Task(models.Model):
         max_length=1,
         choices=STATUS_CHOICES,
         default=NEW,
+    )
+    creator = models.ForeignKey(
+        User,
     )
 
     def __str__(self):

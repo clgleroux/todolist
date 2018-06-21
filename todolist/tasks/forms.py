@@ -75,3 +75,4 @@ class UpdateForm(ModelForm):
 
 class LoginView(TemplateView):
     template_name = 'tasks/login.html'
+    label = ''

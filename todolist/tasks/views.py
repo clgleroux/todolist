@@ -17,7 +17,9 @@ def home(request):
     if request.method == "POST":
         create_form = CreationForm(request.POST)
         if create_form.is_valid():
-            create_form.save()
+            obj = create_form.save(commit=False)
+            obj.creator = request.user
+            obj.save()
             return redirect(reverse('tasks:home'))
         else:
             return render(
@@ -28,7 +30,10 @@ def home(request):
 
     create_form = CreationForm()
     filter_form = FilterForm()
-    tasks = Task.objects.all().order_by('-pk')
+
+    global tasks
+    tasks = None
+    tasks = Task.objects.all().filter(creator=request.user).order_by('-pk')
 
     if 'status' in request.GET:
         tasks = tasks.filter(status__in=request.GET.getlist('status'))

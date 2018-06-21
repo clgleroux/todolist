@@ -6,7 +6,7 @@ yarn:
 
 update:
 	./venv/bin/pip install -U -r requierements.txt
-	
+
 install: venv yarn update migrate
 
 test:
