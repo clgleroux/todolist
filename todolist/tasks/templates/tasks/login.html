@@ -13,11 +13,9 @@
     {% csrf_token %}
     <table>
       <tr>
-        <td>{{ form.username.label_tag }}</td>
         <td>{{ form.username }}</td>
       </tr>
       <tr>
-        <td>{{ form.password.label_tag }}</td>
         <td>{{ form.password }}</td>
       </tr>
     </table>
@@ -26,7 +24,7 @@
     <input type="hidden" name="next" value="{% url 'tasks:home' %}" />
     </form>
 
-<a href="/register">Create account</a>
+<a href="/register" class="color-a">Create account</a>
   </div>
 
 </div>

@@ -46,7 +46,6 @@ h1 {
     color: $color-button;
     border-color: $color-button;
     margin: 0;
-
 }
 
 .color-text-grey {
@@ -97,9 +96,20 @@ ul.dropdown, ul.menu {
 }
 
 ul.sub-ul {
-    margin-left: 13px;
     background-color: $color-shadow;
     padding: 0;
+}
+
+.header-logo {
+    text-align: center !important;
+    width: 100%;
+    display: block;
+}
+
+.top-bar-right {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 
@@ -119,7 +129,29 @@ form li {
     margin-left: 10%;
 }
 
-
 ul {
     list-style-type: none;
 }
+
+
+
+.color-a {
+    color: rgb(66, 134, 244);
+}
+
+input[value="login"] {
+    text-align: center;
+    border: 0;
+    width: 20%;
+    margin-left: 40%;
+}
+
+#id_username, #id_password, #id_password1, #id_password2 {
+    border: 0;
+    box-shadow: none;
+    border-bottom: 1px solid grey;
+    text-align: center;
+}
+
+
+// Test

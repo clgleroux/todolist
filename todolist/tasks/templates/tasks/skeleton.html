@@ -16,15 +16,13 @@
   <body class="no-js">
 
     <div class="top-bar header-shadow">
-                <h1 class="menu">TodoList</h1>
+                <h1 class="header-logo">TodoList</h1>
     </div>
-            <div class="top-bar-right">
+    <div class="top-bar-right">
                 {% if request.user.is_authenticated %}
                 <h4>Hello {{ user.username }}</h4>
-                <a href="./logout"><h4>Logout</h4></a>
+                <a href="./logout" class="color-a"><h4>Logout</h4></a>
                 {% endif %}
-            </div>
-    </div>
     </div>
 
     <div>
@@ -52,6 +50,12 @@
         $(document).foundation();
 
       })
+
+
+      $('#id_username').attr('placeholder', 'User');
+      $('#id_password').attr('placeholder', 'Password');
+      $('#id_password1').attr('placeholder', 'Password');
+      $('#id_password2').attr('placeholder', 'Confirmation Password');
     </script>
 
     {% block 'js' %}{% endblock %}
