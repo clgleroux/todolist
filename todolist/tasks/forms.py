@@ -4,13 +4,8 @@ import unicodedata
 
 from django.forms import ModelForm
 from django.forms.fields import TypedChoiceField
-from django.forms import EmailField
-
 from tasks.models import Task
 from django.utils.translation import gettext_lazy as _
-
-
-from django.contrib.auth import password_validation
 
 from django.contrib.auth.models import User
 
@@ -89,33 +84,8 @@ class UsernameField(forms.CharField):
 
 
 class UserCreationForm(UserCreationFrom_):
-    email = EmailField(label=_(""), required=True)
-    error_messages = {
-        'password_mismatch': _("The two password fields didn't match."),
-    }
-    password1 = forms.CharField(
-        label=_(""),
-        strip=False,
-        widget=forms.PasswordInput,
-        # TODO: Surcharge de la password_validators_help_text_html
-        help_text=password_validation.password_validators_help_text_html(),
-    )
-    password2 = forms.CharField(
-        label=_(""),
-        widget=forms.PasswordInput,
-        strip=False,
-        help_text=_("Enter the same password as before, for verification."),
-    )
-
-    def save(self, commit=True):
-        user = super(UserCreationForm, self).save(commit=False)
-        user.set_password(self.cleaned_data["password1"])
-        user.email = self.cleaned_data["email"]
-        if commit:
-            user.save()
-        return user
 
     class Meta:
         model = User
-        fields = ("username",)
+        fields = ("username", "email")
         field_classes = {'username': UsernameField}

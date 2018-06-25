@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-13 09:55+0000\n"
+"POT-Creation-Date: 2018-06-25 14:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,38 +17,46 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tasks/forms.py:12
+#: tasks/forms.py:20
 msgid "Description"
 msgstr ""
 
-#: tasks/forms.py:35
+#: tasks/forms.py:38
 msgid "Status"
 msgstr ""
 
-#: tasks/forms.py:39
+#: tasks/forms.py:42
 msgid "Select no more than 3."
 msgstr ""
 
-#: tasks/models.py:14
+#: tasks/models.py:16
 msgid "New"
 msgstr ""
 
-#: tasks/models.py:15
+#: tasks/models.py:17
 msgid "Pending"
 msgstr ""
 
-#: tasks/models.py:16
+#: tasks/models.py:18
 msgid "Done"
 msgstr ""
 
-#: tasks/templates/tasks/index.html:8 tasks/templates/tasks/index.html:12
+#: tasks/templates/tasks/index.html:18 tasks/templates/tasks/index.html:79
 msgid "Submit"
 msgstr ""
 
-#: tasks/templates/tasks/index.html:21
-msgid "Update"
+#: tasks/templates/tasks/login.html:9
+msgid "Your username and password didn't match. Please try again."
 msgstr ""
 
-#: tasks/templates/tasks/index.html:23
-msgid "Delete"
+#: tasks/templates/tasks/login.html:24 tasks/templates/tasks/register.html:36
+msgid "Login"
+msgstr ""
+
+#: tasks/templates/tasks/login.html:31 tasks/templates/tasks/register.html:17
+msgid "Create account"
+msgstr ""
+
+#: tasks/templates/tasks/register.html:28
+msgid "Register"
 msgstr ""

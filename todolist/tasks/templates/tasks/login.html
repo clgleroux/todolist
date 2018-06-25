@@ -6,10 +6,10 @@
   <div class="small-12 flex-center columns">
       <div id="page">
     {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
+    <p>{% trans "Your username and password didn't match. Please try again." %}</p>
     {% endif %}
 
-    <form method="post" action=".">
+    <form name="myform" method="post" action=".">
     {% csrf_token %}
     <table>
       <tr>
@@ -19,17 +19,17 @@
         <td>{{ form.password }}</td>
       </tr>
     </table>
-    <input type="submit" value="login" />
+    <button class="box-1" type="submit">
+      <div class="btn btn-one">
+        <span onclick="document.forms[0].submit()">{% trans "Login" %}</span>
+      </div>
+    </button>
     <input type="hidden" name="next" value="{% url 'tasks:home' %}" />
+
     </form>
 
-<a href="/register" class="color-a">Create account</a>
-<!-- Hover #1 -->
-<div class="box-1">
-  <div class="btn btn-one">
-    <span>Login</span>
-  </div>
-</div>
+<a href="/register" class="color-a">{% trans "Create account" %}</a>
+
   </div>
 
 </div>

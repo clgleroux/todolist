@@ -14,7 +14,7 @@
         </ul>
         {% endif %}
 
-        <h1>Create account</h1>
+        <h1>{% trans "Create account"%}</h1>
 
         <form method="post" >
           {% csrf_token %}
@@ -22,18 +22,18 @@
             {{ form.as_ul }}
             <tr>
               <td></td>
-              <td><input type="submit" name="submit" value="Register" /></td>
+              <td>
+                <button class="box-1" type="submit">
+                <div class="btn btn-one">
+                  <span>{% trans "Register" %}</span>
+                </div>
+                </button>
+              </td>
             </tr>
           </table>
         </form>
-        <!-- Hover #1 -->
-        <div class="box-1">
-          <div class="btn btn-one">
-            <span>Register</span>
-          </div>
-        </div>
       </div>
-      <a href="/" class="color-a">Login</a>
+      <a href="/" class="color-a">{% trans "Login" %}</a>
     </div>
   </div>
 </div>
