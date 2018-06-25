@@ -80,7 +80,9 @@ class UpdateForm(ModelForm):
 
 class UsernameField(forms.CharField):
     def to_python(self, value):
-        return unicodedata.normalize('NFKC', super(UsernameField, self).to_python(value))
+        return unicodedata.normalize(
+            'NFKC',
+            super(UsernameField, self).to_python(value))
 
 
 class UserCreationForm(UserCreationFrom_):
