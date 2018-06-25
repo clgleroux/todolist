@@ -5,6 +5,13 @@ from django.forms.fields import TypedChoiceField
 from tasks.models import Task
 from django.utils.translation import gettext_lazy as _
 
+from django.contrib.auth import password_validation
+# from django.utils.html import format_html
+# from django.contrib.auth.password_validation import (
+#    password_validators_help_text_html as password_validators_help_text_html_)
+
+from django.contrib.auth.forms import UserCreationForm as UserCreationFrom_
+
 
 class CreationForm(ModelForm):
     class Meta:
@@ -70,3 +77,22 @@ class UpdateForm(ModelForm):
 
     def save(self, pk):
         Task.objects.filter(pk=pk).update(**self.cleaned_data)
+
+
+class UserCreationForm(UserCreationFrom_):
+    error_messages = {
+        'password_mismatch': _("The two password fields didn't match."),
+    }
+    password1 = forms.CharField(
+        label=_("Password"),
+        strip=False,
+        widget=forms.PasswordInput,
+        # TODO: Surcharge de la password_validators_help_text_html
+        help_text=password_validation.password_validators_help_text_html(),
+    )
+    password2 = forms.CharField(
+        label=_("Password confirmation"),
+        widget=forms.PasswordInput,
+        strip=False,
+        help_text=_("Enter the same password as before, for verification."),
+    )

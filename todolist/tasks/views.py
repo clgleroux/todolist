@@ -4,10 +4,9 @@ from django.urls import reverse
 
 from .models import Task
 from .forms import (
-    CreationForm, UpdateForm, FilterForm)
+    CreationForm, UpdateForm, FilterForm, UserCreationForm)
 
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import logout_then_login
 from django.contrib.auth.views import LoginView as LoginView_
 
