@@ -20,10 +20,9 @@ h1 {
 }
 
 .header-shadow {
-
-      -webkit-box-shadow: 0 6px 4px -4px $color-shadow;
-      -moz-box-shadow: 0 6px 4px -4px $color-shadow;
-      box-shadow: 0 6px 4px -4px $color-shadow;
+    -webkit-box-shadow: 0 6px 4px -4px $color-shadow;
+    -moz-box-shadow: 0 6px 4px -4px $color-shadow;
+    box-shadow: 0 6px 4px -4px $color-shadow;
 }
 
 .header-logo {
@@ -42,9 +41,9 @@ h1 {
 
 
 /*
-========================
-          PAGE
-========================
+========================================================================
+----------------------------------PAGE----------------------------------
+========================================================================
 */
 #page {
     width: 75%;
@@ -61,6 +60,13 @@ h1 {
   justify-content: center;
 }
 
+/*
+========================
+         TASKS
+========================
+*/
+
+// Haut de Page
 #haut-page {
     border-bottom : 2px solid $color-border-bottom;
 }
@@ -75,11 +81,16 @@ h1 {
     color: $color-grey;
 }
 
-
-h1 {
-    text-align: center;
+#p-new {
+    display: inline-block;
+    top: 0;
 }
 
+#filter_form {
+    display: inline-block;
+}
+
+// All tasks
 h2 {
     padding-top: 2%;
     border-bottom : 2px solid $color-border-tasks;
@@ -102,15 +113,6 @@ ul.dropdown, ul.menu {
     padding: 1rem 0;
 }
 
-#p-new {
-    display: inline-block;
-    top: 0;
-}
-
-#filter_form {
-    display: inline-block;
-}
-
 #close-button {
     font-size: 2em;
 }
@@ -121,6 +123,11 @@ ul.sub-ul {
 }
 
 
+/*
+========================
+        LOGIN
+========================
+*/
 div[id=login] {
     max-width: 50rem;
     margin-bottom: 0;
@@ -130,14 +137,6 @@ div[id=login] {
 
 .callout {
     width: 50rem;
-}
-
-
-
-#id_username, #id_password, #id_password1, #id_password2, #id_email {
-    border: 0;
-    box-shadow: none;
-    border-bottom: 1px solid grey;
 }
 
 
@@ -158,11 +157,6 @@ ul {
 }
 
 
-
-.color-a {
-    color: rgb(66, 134, 244);
-}
-
 // Design helptext
 span.help {
     color: grey;
@@ -178,6 +172,17 @@ span.help ul li {
 span.help ul {
     margin-left: 0;
     margin-bottom: 0;
+}
+
+
+#id_username, #id_password, #id_password1, #id_password2, #id_email {
+    border: 0;
+    box-shadow: none;
+    border-bottom: 1px solid grey;
+}
+
+.color-a {
+    color: rgb(66, 134, 244);
 }
 
 
@@ -253,6 +258,8 @@ button[class*=box] {
     opacity: 0;
     transform: scale(0.1, 1);
 }
+
+
 
 /*
 ========================
