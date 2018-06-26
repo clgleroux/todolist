@@ -4,7 +4,7 @@ from django.urls import reverse
 
 from .models import Task
 from .forms import (
-    CreationForm, UpdateForm, FilterForm, UserCreationForm)
+    CreationForm, UpdateForm, FilterForm, UserCreationForm, EditForm)
 
 from django.contrib import messages
 from django.contrib.auth.views import logout_then_login
@@ -16,11 +16,13 @@ def home(request):
         return redirect('login')
     if request.method == "POST":
         create_form = CreationForm(request.POST)
+        edit_form = EditForm(request.POST)
         if create_form.is_valid():
             obj = create_form.save(commit=False)
             obj.creator = request.user
             obj.save()
             return redirect(reverse('tasks:home'))
+
         else:
             return render(
                 request,
@@ -58,8 +60,11 @@ def delete(request, pk):
 def update(request, pk):
     if request.method == "GET":
         form = UpdateForm(request.GET)
+        form_edit = EditForm(request.GET)
         if form.is_valid():
             form.save(pk)
+        elif form_edit.is_valid():
+            form_edit.save(pk)
     return redirect(reverse('tasks:home'))
 
 

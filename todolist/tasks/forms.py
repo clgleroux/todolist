@@ -3,6 +3,7 @@ from django import forms
 import unicodedata
 
 from django.forms import ModelForm
+from django.forms.fields import CharField
 from django.forms.fields import TypedChoiceField
 from tasks.models import Task
 from django.utils.translation import gettext_lazy as _
@@ -17,6 +18,41 @@ class CreationForm(ModelForm):
         labels = {
             "description": _("Description"),
         }
+
+
+class DescriptionTask(forms.Select):
+    template_name = 'tasks/status_choice.html'
+
+    def __init__(self, *args, instance_pk=None, **kwargs):
+        self.instance_pk = instance_pk
+        return super().__init__(*args, **kwargs)
+
+    def get_context(self, name, value, attrs):
+        context = super().get_context(name, value, attrs)
+        context['instance_pk'] = self.instance_pk
+        return context
+
+
+class EditForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = ['description']
+
+    def __init__(self, *args, model_instance=None, **kwargs):
+
+        result = super().__init__(*args, **kwargs)
+
+        self.fields['description'] = CharField(
+            choices=Task.description,
+            initial=model_instance and model_instance.status or None,
+            label='',
+            widget=DescriptionTask(
+                instance_pk=model_instance and model_instance.pk or None))
+
+        return result
+
+    def save(self, pk):
+        Task.objects.filter(pk=pk).update(**self.cleaned_data)
 
 
 class FoundationCheckboxSelectMultiple(forms.CheckboxSelectMultiple):
@@ -41,8 +77,8 @@ class FilterForm(forms.Form):
         return self.cleaned_data['my_status']
 
 
-class FoundationSelectForm(forms.Select):
-    template_name = 'tasks/select_choice_foundation.html'
+class StatusChoice(forms.Select):
+    template_name = 'tasks/status_choice.html'
 
     def __init__(self, *args, instance_pk=None, **kwargs):
         self.instance_pk = instance_pk
@@ -67,7 +103,7 @@ class UpdateForm(ModelForm):
             choices=Task.STATUS_CHOICES,
             initial=model_instance and model_instance.status or None,
             label='',
-            widget=FoundationSelectForm(
+            widget=StatusChoice(
                 instance_pk=model_instance and model_instance.pk or None))
 
         return result
