@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 
 <html>
-
   <head>
     <title>{% block title %}TodoList{% endblock %}</title>
     <meta HTTP-EQUIV="CACHE-CONTROL" content="no-Cache">
@@ -10,20 +9,20 @@
     {% compress css %}
     <link href="{% sass_src 'tasks/scss/main.scss' %}" rel="stylesheet" type="text/css" />
     {% endcompress %}
-
   </head>
 
   <body class="no-js">
 
     <div class="top-bar header-shadow">
-                <h1 class="header-logo">TodoList</h1>
+      <h1 class="header-logo">TodoList</h1>
     </div>
+
+    {% if request.user.is_authenticated %}
     <div class="top-bar-right">
-                {% if request.user.is_authenticated %}
-                <h4>Hello {{ user.username }}</h4>
-                <a href="./logout" class="color-a"><h4>Logout</h4></a>
-                {% endif %}
+      <h4>Hello {{ user.username }}</h4>
+      <a href="./logout" class="color-a"><h4>Logout</h4></a>
     </div>
+    {% endif %}
 
     <div>
       {% block tasks %}{% endblock %}
@@ -62,5 +61,4 @@
     {% block 'js' %}{% endblock %}
     {% endcompress %}
   </body>
-
 </html>

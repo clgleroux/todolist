@@ -41,4 +41,6 @@ urlpatterns = [
         name='logout'),
     url(r'^register/$', views.register, name='register'),
     url(r'^tasks/', include('tasks.urls', namespace='tasks')),
+    url('^', include('django.contrib.auth.urls')),
+    url(r'^password_reset/$', auth_views.password_reset),
 ]

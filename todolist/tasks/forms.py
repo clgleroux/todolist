@@ -7,8 +7,6 @@ from django.forms.fields import TypedChoiceField
 from tasks.models import Task
 from django.utils.translation import gettext_lazy as _
 
-from django.contrib.auth.models import User
-
 from django.contrib.auth.forms import UserCreationForm as UserCreationFrom_
 
 
@@ -87,7 +85,11 @@ class UsernameField(forms.CharField):
 
 class UserCreationForm(UserCreationFrom_):
 
-    class Meta:
-        model = User
+    class Meta(UserCreationFrom_.Meta):
         fields = ("username", "email")
-        field_classes = {'username': UsernameField}
+
+    def __init__(self, *args, model_instance=None, **kwargs):
+        result = super().__init__(*args, **kwargs)
+        for key in self.fields:
+            self.fields[key].label = ''
+        return result

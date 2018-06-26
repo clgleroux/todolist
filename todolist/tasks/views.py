@@ -68,8 +68,8 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Account created successfully')
-            return redirect('register')
+            messages.success(request, 'Profile is created.')
+            return redirect('/')
 
     else:
         form = UserCreationForm()

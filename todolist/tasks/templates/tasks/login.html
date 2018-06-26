@@ -3,11 +3,38 @@
 
 {% block tasks %}
 <div class="row">
+  <div class="small-12 flex-center columns ">
+      {% if form.errors %}
+      <div class="callout warning" data-closable>
+        <h5>{% trans "Warnings" %}</h5>
+        <p>{% trans "Your username and password didn't match. Please try again." %}</p>
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %}
+      {% if messages %}
+      <div class="callout success" data-closable>
+        <h5>{% trans "Success" %}</h5>
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %}
+</div>
+</div>
+
+<div class="row">
   <div class="small-12 flex-center columns">
       <div id="page">
-    {% if form.errors %}
-    <p>{% trans "Your username and password didn't match. Please try again." %}</p>
-    {% endif %}
+          <div id="login">
+
+
+
+
 
     <form name="myform" method="post" action=".">
     {% csrf_token %}
@@ -31,7 +58,7 @@
 <a href="/register" class="color-a">{% trans "Create account" %}</a>
 
   </div>
-
+</div>
 </div>
 </div>
 {% endblock %}

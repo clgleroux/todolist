@@ -121,8 +121,16 @@ ul.sub-ul {
 }
 
 
+div[id=login] {
+    max-width: 50rem;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-
+.callout {
+    width: 50rem;
+}
 
 
 
@@ -138,15 +146,7 @@ ul.sub-ul {
      FROM REGISTER
 ========================
 */
-table {
-    list-style-type: none;
-    text-align: center;
-    width: 50%;
-    margin-left: 25%;
-}
-
-form li {
-    list-style-type: none;
+div[id=register] {
     max-width: 50rem;
     margin-bottom: 0;
     margin-left: auto;
@@ -164,18 +164,18 @@ ul {
 }
 
 // Design helptext
-span.helptext {
+span.help {
     color: grey;
     font-size: 0.8rem;
 }
 
-span.helptext ul li {
+span.help ul li {
     color: grey;
     margin-left: 0;
 
 }
 
-span.helptext ul {
+span.help ul {
     margin-left: 0;
     margin-bottom: 0;
 }
@@ -189,10 +189,12 @@ span.helptext ul {
 
 button[class*=box] {
     height: 33.33%;
-    width: 100%;
+    width: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn {
@@ -257,3 +259,12 @@ button[class*=box] {
           TEST
 ========================
 */
+
+
+
+table {
+    list-style-type: none;
+    text-align: center;
+    width: 50%;
+    margin-left: 25%;
+}
