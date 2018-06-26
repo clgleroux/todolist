@@ -4,19 +4,20 @@
 {% block tasks %}
 <div class="row">
   <div class="small-12 flex-center columns ">
+
     <div id="page">
+
       <div id="haut-page">
         <div class="grid-x grid-margin-x">
           <div class="cell small-2 large-offset-1 align-self-middle">
-
             <p id="p-new"><button class="hollow button" id="button-new" data-open="create-modal">New Task</button></p>
           </div>
           <div class="cell small-4 large-offset-1 align-self-left">
-              <form id="filter_form" action="." method="get" autocomplete="off">
-                {% csrf_token %}
-                {{ filter_form }}
-                <input type="submit" class="button" value= {% trans "Submit" %}>
-              </form>
+            <form id="filter_form" action="." method="get" autocomplete="off">
+              {% csrf_token %}
+              {{ filter_form }}
+              <input type="submit" class="button" value= {% trans "Submit" %}>
+            </form>
           </div>
           <div class="cell small-2 align-self-middle text-center color-text-grey">Status</div>
           <div class="cell small-1 align-self-middle text-center color-text-grey">Delete</div>
@@ -27,44 +28,38 @@
         <div class="grid-x grid-margin-x">
           <div class="cell small-10 large-offset-1">
             <h2>Tasks</h2>
+          </div>
+        </div>
+        <div class="grid-x grid-margin-x">
+          <div class="cell small-10 large-offset-1">
+            <ul class="no-bullet">
+            {% for task in tasks %}
+              <li id="li-tasks">
+                <div class="grid-x grid-margin-x">
+                  <div class="cell small-9 border-bottom">
+                    {{ task.description }}
+                  </div>
+
+                  <div class="cell small-2 text-center align-self-middle">
+                      {% get_update_form_for task %}
+                    </form>
+                  </div>
+
+                  <div class="cell small-1 text-center align-self-middle">
+                    <button type="button" aria-label="Dismiss alert" id="close-button" data-close>
+                      <a  href="{% url 'tasks:delete' task.pk %}"><span aria-hidden="true">&times;</span></a>
+                    </button>
+                  </div>
+                </div>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
         </div>
       </div>
-      <div class="grid-x grid-margin-x">
-        <div class="cell small-10 large-offset-1">
 
-        <ul class="no-bullet">
-
-          {% for task in tasks %}
-
-
-          <li id="li-tasks">
-            <div class="grid-x grid-margin-x">
-              <div class="cell small-9 border-bottom">
-                {{ task.description }}
-              </div>
-
-              <div class="cell small-2 text-center align-self-middle">
-                  {% get_update_form_for task %}
-                </form>
-              </div>
-
-              <div class="cell small-1 text-center align-self-middle">
-                <button type="button" aria-label="Dismiss alert" id="close-button" data-close>
-                  <a  href="{% url 'tasks:delete' task.pk %}"><span aria-hidden="true">&times;</span></a>
-                </button>
-              </div>
-            </div>
-          </li>
-
-
-
-          {% endfor %}
-
-        </ul>
     </div>
-</div>
-      </div>
-    </div>
+    
   </div>
 </div>
 

@@ -4,61 +4,58 @@
 {% block tasks %}
 <div class="row">
   <div class="small-12 flex-center columns ">
-      {% if form.errors %}
-      <div class="callout warning" data-closable>
-        <h5>{% trans "Warnings" %}</h5>
-        <p>{% trans "Your username and password didn't match. Please try again." %}</p>
-        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+
+    {% if form.errors %}
+    <div class="callout warning" data-closable>
+      <h5>{% trans "Warnings" %}</h5>
+      <p>{% trans "Your username and password didn't match. Please try again." %}</p>
+      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
         <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      {% endif %}
-      {% if messages %}
-      <div class="callout success" data-closable>
-        <h5>{% trans "Success" %}</h5>
-        {% for message in messages %}
-        <p>{{ message }}</p>
-        {% endfor %}
-        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      </button>
+    </div>
+    {% endif %}
+
+    {% if messages %}
+    <div class="callout success" data-closable>
+      <h5>{% trans "Success" %}</h5>
+      {% for message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %}
+      <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
         <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      {% endif %}
-</div>
+      </button>
+    </div>
+    {% endif %}
+
+  </div>
 </div>
 
 <div class="row">
   <div class="small-12 flex-center columns">
-      <div id="page">
-          <div id="login">
 
-
-
-
-
-    <form name="myform" method="post" action=".">
-    {% csrf_token %}
-    <table>
-      <tr>
-        <td>{{ form.username }}</td>
-      </tr>
-      <tr>
-        <td>{{ form.password }}</td>
-      </tr>
-    </table>
-    <button class="box-1" type="submit">
-      <div class="btn btn-one">
-        <span onclick="document.forms[0].submit()">{% trans "Login" %}</span>
+    <div id="page">
+      <div id="login">
+        <form name="myform" method="post" action=".">
+          {% csrf_token %}
+          <table>
+            <tr>
+              <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+              <td>{{ form.password }}</td>
+            </tr>
+          </table>
+          <button class="box-1" type="submit">
+            <div class="btn btn-one">
+              <span onclick="document.forms[0].submit()">{% trans "Login" %}</span>
+            </div>
+          </button>
+          <input type="hidden" name="next" value="{% url 'tasks:home' %}" />
+        </form>
+        <a href="/register" class="color-a">{% trans "Create account" %}</a>
       </div>
-    </button>
-    <input type="hidden" name="next" value="{% url 'tasks:home' %}" />
-
-    </form>
-
-<a href="/register" class="color-a">{% trans "Create account" %}</a>
-
+    </div>
+    
   </div>
-</div>
-</div>
 </div>
 {% endblock %}

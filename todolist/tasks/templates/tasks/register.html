@@ -4,6 +4,7 @@
 {% block tasks %}
 <div class="row">
   <div class="small-12 flex-center columns ">
+
   {% if form.errors %}
     <div class="callout warning" data-closable>
       <h5>Warning</h5>
@@ -17,17 +18,17 @@
       </button>
     </div>
     {% endif %}
+
   </div>
 </div>
 
 
 <div class="row">
   <div class="small-12 flex-center columns ">
+
     <div id="page">
       <div id="register">
-
         <h1>{% trans "Create account"%}</h1>
-
         <form method="post" >
           {% csrf_token %}
           {% for field in form %}
@@ -38,16 +39,17 @@
             {% endif %}
           </div>
           {% endfor %}
-                <button class="box-1" type="submit">
-                <div class="btn btn-one">
-                  <span>{% trans "Register" %}</span>
-                </div>
-                </button>
+          <button class="box-1" type="submit">
+            <div class="btn btn-one">
+              <span>{% trans "Register" %}</span>
+            </div>
+          </button>
         </form>
 
-      <a href="/" class="color-a">{% trans "Login" %}</a>
+        <a href="/" class="color-a">{% trans "Login" %}</a>
       </div>
     </div>
+    
   </div>
 </div>
 {% endblock %}
