@@ -20,10 +20,11 @@ class CreationForm(ModelForm):
         }
 
 
-class DescriptionTask(forms.Select):
-    template_name = 'tasks/status_choice.html'
+class DescriptionTask(forms.Textarea):
+    template_name = 'tasks/edit_textarea.html'
 
     def __init__(self, *args, instance_pk=None, **kwargs):
+        # Probleme instance_pk
         self.instance_pk = instance_pk
         return super().__init__(*args, **kwargs)
 
@@ -43,9 +44,8 @@ class EditForm(ModelForm):
         result = super().__init__(*args, **kwargs)
 
         self.fields['description'] = CharField(
-            choices=Task.description,
-            initial=model_instance and model_instance.status or None,
-            label='',
+            initial=model_instance and model_instance.description or None,
+            label=_('New Description'),
             widget=DescriptionTask(
                 instance_pk=model_instance and model_instance.pk or None))
 

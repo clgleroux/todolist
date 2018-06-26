@@ -38,7 +38,7 @@
                 <div class="grid-x grid-margin-x">
                   <div class="cell small-9 border-bottom">
                     {{ task.description }}
-                    <p><button class="hollow button" id="button-new" data-open="edit-modal">edit</button></p>
+                    <p><button class="hollow button" id="button-new" data-open="edit-modal-{{ task.pk }}">edit</button></p>
                   </div>
 
                   <div class="cell small-2 text-center align-self-middle">
@@ -78,11 +78,12 @@
 
 </div>
 
-<div class="reveal" id="edit-modal" data-reveal>
+{% for task in tasks %}
+<div class="reveal" id="edit-modal-{{ task.pk }}" data-reveal>
 
-  <form action="." method="post" autocomplete="off">
+  <form action="{% url 'tasks:update' task.pk %}" method="post" autocomplete="off">
     {% csrf_token %}
-    {{ create_form }}
+    {% get_edit_form_for task %}
     <input type="submit" class="button" value= {% trans "Edit" %}>
   </form>
 
@@ -91,5 +92,6 @@
   </button>
 
 </div>
+{% endfor %}
 
 {% endblock %}

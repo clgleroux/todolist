@@ -16,7 +16,6 @@ def home(request):
         return redirect('login')
     if request.method == "POST":
         create_form = CreationForm(request.POST)
-        edit_form = EditForm(request.POST)
         if create_form.is_valid():
             obj = create_form.save(commit=False)
             obj.creator = request.user
@@ -60,10 +59,12 @@ def delete(request, pk):
 def update(request, pk):
     if request.method == "GET":
         form = UpdateForm(request.GET)
-        form_edit = EditForm(request.GET)
         if form.is_valid():
             form.save(pk)
-        elif form_edit.is_valid():
+
+    elif request.method == "POST":
+        form_edit = EditForm(request.POST)
+        if form_edit.is_valid():
             form_edit.save(pk)
     return redirect(reverse('tasks:home'))
 
