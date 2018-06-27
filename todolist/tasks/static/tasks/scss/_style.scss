@@ -77,6 +77,12 @@ h1.header-logo {
     margin: 0;
 }
 
+.button-edit {
+    background-color: $color-button;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
 .color-text-grey {
     color: $color-grey;
 }
@@ -277,6 +283,8 @@ button[class*=box] {
     box-shadow: 12px 0 15px -4px $color-shadow, -12px 0 8px -4px $color-shadow;
     color: #8a8a8a;
     padding: 0.3rem;
+    word-wrap: break-word;
+    margin: 0.3rem;
 }
 
 #description-task h1 {
@@ -318,6 +326,10 @@ button[class*=box] {
     border-left: 2px solid black;
     padding-left: 2px;
     margin-left: 1rem;
+}
+
+#description-task blockquote p {
+    color: black;
 }
 
 

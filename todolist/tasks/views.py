@@ -11,19 +11,23 @@ from django.contrib.auth.views import logout_then_login
 from django.contrib.auth.views import LoginView as LoginView_
 
 
+def hack(request):
+    # FIXME - HACK: fix textarea newlines handling
+    request.POST._mutable = True
+    description = request.POST.get('description')
+    if description:
+        description = description.replace('\r\n', '\n')
+        request.POST['description'] = description
+    request.POST._mutable = False
+    # End of HACK
+
+
 def home(request):
     if not request.user.is_authenticated():
         return redirect('login')
     if request.method == "POST":
 
-        # FIXME - HACK: fix textarea newlines handling
-        request.POST._mutable = True
-        description = request.POST.get('description')
-        if description:
-            description = description.replace('\r\n', '\n')
-            request.POST['description'] = description
-        request.POST._mutable = False
-        # End of HACK
+        hack(request)
 
         create_form = CreationForm(request.POST)
         if create_form.is_valid():
@@ -73,6 +77,8 @@ def update(request, pk):
             form.save(pk)
 
     elif request.method == "POST":
+        hack(request)
+
         form_edit = EditForm(request.POST)
         if form_edit.is_valid():
             form_edit.save(pk)

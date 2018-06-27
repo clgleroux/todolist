@@ -12,7 +12,7 @@
           <div class="cell small-2 large-offset-1 align-self-middle">
             <p id="p-new"><button class="hollow button" id="button-new" data-open="create-modal">New Task</button></p>
           </div>
-          <div class="cell small-4 large-offset-1 align-self-left">
+          <div class="cell small-3 large-offset-1 align-self-left">
             <form id="filter_form" action="." method="get" autocomplete="off">
               {% csrf_token %}
               {{ filter_form }}
@@ -20,6 +20,7 @@
             </form>
           </div>
           <div class="cell small-2 align-self-middle text-center color-text-grey">Status</div>
+          <div class="cell small-1 align-self-middle text-center color-text-grey">Edit</div>
           <div class="cell small-1 align-self-middle text-center color-text-grey">Delete</div>
         </div>
       </div>
@@ -36,16 +37,19 @@
             {% for task in tasks %}
               <li id="li-tasks">
                 <div class="grid-x grid-margin-x">
-                  <div class="cell small-9 border-bottom">
+                  <div class="cell small-8 border-bottom">
                     <div id='description-task'>
                       {{ task.description|changemarkdown }}
                     </div>
-                    <p><button class="hollow button" id="button-new" data-open="edit-modal-{{ task.pk }}">edit</button></p>
                   </div>
 
                   <div class="cell small-2 text-center align-self-middle">
                       {% get_update_form_for task %}
                     </form>
+                  </div>
+
+                  <div class="cell small-1 text-center align-self-middle">
+                      <p><button class="button button-edit" data-open="edit-modal-{{ task.pk }}">edit</button></p>
                   </div>
 
                   <div class="cell small-1 text-center align-self-middle">
@@ -87,7 +91,7 @@
   <form action="{% url 'tasks:update' task.pk %}" method="post" autocomplete="off">
     {% csrf_token %}
     {% get_edit_form_for task %}
-    <input type="submit" class="button" value= {% trans "Edit" %}>
+    <input type="submit" class="button button-edit" value= {% trans "Edit" %}>
   </form>
 
   <button class="close-button" data-close aria-label="Close reveal" type="button">
