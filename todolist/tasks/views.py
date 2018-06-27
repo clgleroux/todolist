@@ -15,6 +15,16 @@ def home(request):
     if not request.user.is_authenticated():
         return redirect('login')
     if request.method == "POST":
+
+        # FIXME - HACK: fix textarea newlines handling
+        request.POST._mutable = True
+        description = request.POST.get('description')
+        if description:
+            description = description.replace('\r\n', '\n')
+            request.POST['description'] = description
+        request.POST._mutable = False
+        # End of HACK
+
         create_form = CreationForm(request.POST)
         if create_form.is_valid():
             obj = create_form.save(commit=False)

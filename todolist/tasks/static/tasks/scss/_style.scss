@@ -104,6 +104,7 @@ a {
 li#li-tasks {
     border-bottom : 2px solid $color-border-bottom;
     border-bottom-width:50%;
+    padding-top: 0.3rem;
 }
 
 ul.dropdown, ul.menu {
@@ -275,6 +276,7 @@ button[class*=box] {
     -moz-box-shadow: 12px 0 15px -4px $color-shadow, -12px 0 8px -4px $color-shadow;
     box-shadow: 12px 0 15px -4px $color-shadow, -12px 0 8px -4px $color-shadow;
     color: #8a8a8a;
+    padding: 0.3rem;
 }
 
 #description-task h1 {
@@ -311,7 +313,12 @@ button[class*=box] {
     color: rgb(248,241,229);
     font-size: 0.8rem;
 }
-
+#description-task blockquote {
+    color: black;
+    border-left: 2px solid black;
+    padding-left: 2px;
+    margin-left: 1rem;
+}
 
 
 

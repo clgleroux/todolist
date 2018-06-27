@@ -56,6 +56,16 @@
       $('#id_password1').attr('placeholder', 'Password');
       $('#id_password2').attr('placeholder', 'Confirmation Password');
       $('#id_email').attr('placeholder', 'Email');
+
+      var maxLength = 240;
+      $('.reveal').on('open.zf.reveal', function() {
+          $('.reveal[aria-hidden="false"] textarea').keyup(function() {
+              var length = this.value.length;
+              var length = maxLength - length;
+              $('.reveal[aria-hidden="false"] .chars').text(length);
+          });
+      })
+
     </script>
 
     {% block 'js' %}{% endblock %}
