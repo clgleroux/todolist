@@ -15,7 +15,7 @@ html, body {
     margin-bottom: 2%;
 }
 
-h1 {
+h1.header-logo {
     text-align: center !important;
 }
 
@@ -91,7 +91,7 @@ h1 {
 }
 
 // All tasks
-h2 {
+h2#title-tasks {
     padding-top: 2%;
     border-bottom : 2px solid $color-border-tasks;
 }
@@ -262,10 +262,56 @@ button[class*=box] {
 
 
 /*
-========================
-          TEST
-========================
+========================================================================
+----------------------------------TEST----------------------------------
+========================================================================
 */
+
+
+#description-task {
+    // Design
+    border: 1px solid black;
+    -webkit-box-shadow: 12px 0 15px -4px $color-shadow, -12px 0 8px -4px $color-shadow;
+    -moz-box-shadow: 12px 0 15px -4px $color-shadow, -12px 0 8px -4px $color-shadow;
+    box-shadow: 12px 0 15px -4px $color-shadow, -12px 0 8px -4px $color-shadow;
+    color: #8a8a8a;
+}
+
+#description-task h1 {
+    font-size: 2.5rem;
+}
+#description-task h2 {
+    font-size: 2.25rem;
+}
+#description-task h3 {
+    font-size: 2.0rem;
+}
+#description-task h4 {
+    font-size: 1.75rem;
+}
+#description-task h5{
+    font-size: 1.5rem;
+}
+#description-task h6 {
+    font-size: 1.25rem;
+}
+#description-task p {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+#description-task a {
+    font-size: 1rem;
+    color: rgb(66, 134, 244);
+}
+#description-task ul {
+    list-style-type: disc;
+}
+#description-task code {
+    background-color: rgb(43,44,39);
+    color: rgb(248,241,229);
+    font-size: 0.8rem;
+}
+
 
 
 

@@ -1,5 +1,5 @@
 {% extends "tasks/skeleton.html" %}
-{% load tasks_tags i18n static %}
+{% load tasks_tags tasks_filter i18n static %}
 
 {% block tasks %}
 <div class="row">
@@ -27,7 +27,7 @@
       <div id="all-tasks">
         <div class="grid-x grid-margin-x">
           <div class="cell small-10 large-offset-1">
-            <h2>Tasks</h2>
+            <h2 id='title-tasks'>Tasks</h2>
           </div>
         </div>
         <div class="grid-x grid-margin-x">
@@ -37,7 +37,9 @@
               <li id="li-tasks">
                 <div class="grid-x grid-margin-x">
                   <div class="cell small-9 border-bottom">
-                    {{ task.description }}
+                    <div id='description-task'>
+                      {{ task.description|changemarkdown }}
+                    </div>
                     <p><button class="hollow button" id="button-new" data-open="edit-modal-{{ task.pk }}">edit</button></p>
                   </div>
 
