@@ -24,6 +24,7 @@ def hack(request):
 
 def home(request):
     if not request.user.is_authenticated():
+        # Don't connected
         return redirect('login')
     if request.method == "POST":
 
@@ -31,12 +32,14 @@ def home(request):
 
         create_form = CreationForm(request.POST)
         if create_form.is_valid():
+            # Create New Task
             obj = create_form.save(commit=False)
             obj.creator = request.user
             obj.save()
             return redirect(reverse('tasks:home'))
 
         else:
+            # New Task is Invalid
             return render(
                 request,
                 'tasks/index.html',
@@ -51,9 +54,9 @@ def home(request):
     tasks = Task.objects.all().filter(creator=request.user).order_by('-pk')
 
     if 'status' in request.GET:
+        # Display status ask
         tasks = tasks.filter(status__in=request.GET.getlist('status'))
         filter_form = FilterForm(request.GET)
-
     return render(
         request,
         'tasks/index.html',
@@ -62,21 +65,25 @@ def home(request):
             'filter_form': filter_form,
             'tasks': tasks,
         },
+        status=200
     )
 
 
 def delete(request, pk):
+    # Delete Task
     Task.objects.get(pk=pk).delete()
     return redirect(reverse('tasks:home'))
 
 
 def update(request, pk):
     if request.method == "GET":
+        # Update a status
         form = UpdateForm(request.GET)
         if form.is_valid():
             form.save(pk)
 
     elif request.method == "POST":
+        # Edit Task
         hack(request)
 
         form_edit = EditForm(request.POST)
@@ -89,6 +96,7 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
+            # Create a new User
             form.save()
             messages.success(request, 'Profile is created.')
             return redirect('/')
@@ -100,6 +108,7 @@ def register(request):
 
 
 def logoutnlogin(request):
+    # Disconnected
     return logout_then_login(request, login_url='/login')
 
 
@@ -108,5 +117,6 @@ class LoginView(LoginView_):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated():
+            # User connected go home
             return redirect('tasks:home')
         return super().get(request, *args, **kwargs)
