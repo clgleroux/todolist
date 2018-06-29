@@ -23,7 +23,7 @@ from tasks.views import LoginView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', LoginView.as_view(), name='login'),
+    url(r'^$', LoginView.as_view(), name='login-home'),
     url(
         r'^tasks/logout/$',
         auth_views.logout,
