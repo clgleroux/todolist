@@ -2,11 +2,8 @@
 from __future__ import unicode_literals
 from .models import Task
 
-
-from django.shortcuts import redirect
 from django.urls import reverse
 from django.test import TestCase
-from django.test import Client
 
 from django.contrib.auth.models import User
 
@@ -49,6 +46,22 @@ class TestTask(TestCase):
         self.assertEquals(response.status_code, 302)
 
     # OK
+    def create_a_account_not_valid(self):
+        self.client.login(
+            username=self.username,
+            password=self.password)
+
+        register = reverse("register")
+        self.client.post(
+            register,
+            {
+                "username": "First",
+                "email": "demo@gmail.com",
+                "password1": "djangodemo"
+            })
+        self.assertEquals(User.objects.count(), 1)
+
+    # OK
     def test_list_view(self):
         self.client.login(
             username=self.username,
@@ -89,3 +102,74 @@ class TestTask(TestCase):
         response = self.client.post(create, {})
         self.assertEquals(Task.objects.count(), 0)
         self.assertEquals(response.status_code, 400)
+
+    # OK
+    def test_form_valid_not_connect(self):
+        create = reverse("tasks:home")
+        self.client.post(
+            create, {"description": "First todo"})
+        self.assertEquals(Task.objects.count(), 0)
+
+    # OK
+    def test_from_delete(self):
+        self.client.login(
+            username=self.username,
+            password=self.password)
+
+        reverse("tasks:home")
+        descr = 'First description'
+        obj = Task(description=descr)
+        obj.creator = self.user
+        obj.save()
+        url = reverse("tasks:delete", kwargs={'pk': obj.pk})
+        self.client.get(url)
+        self.assertEquals(Task.objects.count(), 0)
+
+    # OK
+    def test_from_delete_not_connect(self):
+        reverse("tasks:home")
+        descr = 'First description'
+        obj = Task(description=descr)
+        obj.creator = self.user
+        obj.save()
+        url = reverse("tasks:delete", kwargs={'pk': obj.pk})
+        self.client.get(url)
+        self.assertEquals(Task.objects.count(), 1)
+
+    # TODO: edit descr
+    def test_from_edit(self):
+        self.client.login(
+            username=self.username,
+            password=self.password)
+
+        reverse("tasks:home")
+        descr = 'First description'
+        obj = Task(description=descr)
+        obj.creator = self.user
+        obj.save()
+
+        descrtest = 'Test Description'
+        url = reverse("tasks:update", kwargs={'pk': obj.pk})
+        response = self.client.post(
+            url, {"description": descrtest}, follow=True)
+        self.assertEquals(Task.objects.count(), 1)
+        self.assertIn(descrtest.encode(), response.content)
+
+    # TODO: edit status
+    def test_from_status(self):
+        self.client.login(
+            username=self.username,
+            password=self.password)
+
+        reverse("tasks:home")
+        descr = 'First description'
+        obj = Task(description=descr)
+        obj.creator = self.user
+        obj.save()
+
+        status = 'D'
+        url = reverse("tasks:update", kwargs={'pk': obj.pk})
+        response = self.client.post(
+            url, {"status": status}, follow=True)
+        self.assertEquals(Task.objects.count(), 1)
+        self.assertIn(status.encode(), response.content)

@@ -10,6 +10,8 @@ from django.contrib import messages
 from django.contrib.auth.views import logout_then_login
 from django.contrib.auth.views import LoginView as LoginView_
 
+from django.contrib.auth.decorators import login_required
+
 
 def hack(request):
     # FIXME - HACK: fix textarea newlines handling
@@ -22,6 +24,8 @@ def hack(request):
     # End of HACK
 
 
+# User connect required
+@login_required(login_url='/')
 def home(request):
     if not request.user.is_authenticated():
         # Don't connected
@@ -69,12 +73,16 @@ def home(request):
     )
 
 
+# User connect required
+@login_required(login_url='/')
 def delete(request, pk):
     # Delete Task
     Task.objects.get(pk=pk).delete()
     return redirect(reverse('tasks:home'))
 
 
+# User connect required
+@login_required(login_url='/')
 def update(request, pk):
     if request.method == "GET":
         # Update a status
